@@ -79,7 +79,7 @@ inline int64_t FutureDrift(int64_t nTime) { return nTime + DRIFT; }
 
 inline CScript GetFoundationScript()
 {
-        CBitcoinAddress address = "GeJw1g1rgTax56otxkFFsETMvzWFZHETAX";
+        CBitcoinAddress address = "Bbp3spMT2Ki24qNPv3i2eEDqF3gf95bYfy";
         CScript payOutScript;
         payOutScript.SetDestination(address.Get());
         return payOutScript;
