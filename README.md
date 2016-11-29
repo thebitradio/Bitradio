@@ -6,6 +6,10 @@ Bitradio uses libsecp256k1, libgmp, Boost1.55, OR Boost1.57,  Openssl1.01p, Berk
 Block Spacing: 2 minutes
 Stake Minimum Age: 8 Hours
 
+4,0 BRO for listenig to Radio (payed to users of Bitrad.io)
+0,5 BRO for Masternode owners
+0,5 BRO for Staking
+
 P2P Port: 32450
 RPC Port: 32451
 
