@@ -1484,11 +1484,6 @@ int64_t GetProofOfStakeReward(const CBlockIndex* pindexPrev, int64_t nCoinAge, i
 {
 
     int64_t nSubsidy = STATIC_POS_REWARD;
-
-    if (nBestHeight+1 >= 3400) {
-      nSubsidy = 0.5 * COIN;
-    }
-
     return nSubsidy + nFees;
 }
 
@@ -2089,8 +2084,8 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex, bool fJustCheck)
       if (nStakeReward > nCalculatedStakeReward)
           return DoS(100, error("ConnectBlock() : coinstake pays too much(actual=%d vs calculated=%d)", nStakeReward, nCalculatedStakeReward));
 
-      //For GreenCoin, first output must go to GreencoinFoundation address
-      if (vtx[0].vout[1].scriptPubKey != GetFoundationScript())
+      //For Bitradio, first output must go to Bitradio address
+      if (vtx[0].vout[1].scriptPubKey != GetFoundationScript(pindex->nHeight))
           return DoS(100, error("ConnectBlock() : coinstake does not pay to the charity in the first output"));
 
       int64_t broAmount = 4 * COIN;

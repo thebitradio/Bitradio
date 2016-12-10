@@ -54,8 +54,8 @@ public:
         pchMessageStart[2] = 0x3d;
         pchMessageStart[3] = 0xe4;
         vAlertPubKey = ParseHex("043a250665e3b9e28cf055a41bc512c00fd500ae12cdb892c90800da2d818ac1bb254105972631488d94455befed940155effeee1040c1eea8ad69d3931ef8eb3c");
-        nDefaultPort = 32450;
-        nRPCPort = 32451;
+        nDefaultPort = 32454;
+        nRPCPort = 32455;
         bnProofOfWorkLimit = CBigNum(~uint256(0) >> 20);
 
         const char* pszTimestamp = "Meteorite crashes into Chevy Malibu";

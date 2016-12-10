@@ -133,7 +133,7 @@ CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, int64_t* pFe
 
       int64_t broAmt = 4 * COIN;
       txNew.vout[0].SetEmpty();
-      txNew.vout[1].scriptPubKey = GetFoundationScript();
+      txNew.vout[1].scriptPubKey = GetFoundationScript(nHeight);
       txNew.vout[1].nValue = broAmt;
     }
 

@@ -19,13 +19,13 @@
 
 class CValidationState;
 
-#define START_MASTERNODE_PAYMENTS_TESTNET 1481110311
-#define START_MASTERNODE_PAYMENTS 1481110311
+#define START_MASTERNODE_PAYMENTS_TESTNET 1481772920 // December 15, 2016
+#define START_MASTERNODE_PAYMENTS 1481772920
 
 static const int64_t DARKSEND_COLLATERAL = (0.01*COIN);
 static const int64_t DARKSEND_POOL_MAX = (2499.99*COIN);
 
-static const int64_t STATIC_POS_REWARD = 5 * COIN;
+static const int64_t STATIC_POS_REWARD = 0.5 * COIN;
 
 static const int64_t TARGET_SPACING = 120;
 
@@ -77,9 +77,16 @@ static const unsigned int BLOCK_DOWNLOAD_TIMEOUT = 60;
 static const int64_t DRIFT = 600;
 inline int64_t FutureDrift(int64_t nTime) { return nTime + DRIFT; }
 
-inline CScript GetFoundationScript()
+inline CScript GetFoundationScript(int nHeight)
 {
-        CBitcoinAddress address = "Bbp3spMT2Ki24qNPv3i2eEDqF3gf95bYfy";
+	string fPubKey;
+	if (nHeight <= 4200) {
+	  fPubKey = "BiV7s4LGUTax37q3y9aHKH3E3rCCMbfUWi";
+        } else {
+	  fPubKey = "BkSBPg6xtTJSuUBdhJWdEPeRMreS6TBVTq";
+	}
+
+        CBitcoinAddress address = fPubKey;
         CScript payOutScript;
         payOutScript.SetDestination(address.Get());
         return payOutScript;
