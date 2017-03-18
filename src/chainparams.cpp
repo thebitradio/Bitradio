@@ -58,7 +58,7 @@ public:
         nRPCPort = 32455;
         bnProofOfWorkLimit = CBigNum(~uint256(0) >> 20);
 
-        const char* pszTimestamp = "Meteorite crashes into Chevy Malibu";
+        const char* pszTimestamp = "Mr. Watson, come here, I want to see you";
         std::vector<CTxIn> vin;
         vin.resize(1);
         vin[0].scriptSig = CScript() << 0 << CBigNum(42) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
@@ -66,19 +66,19 @@ public:
         vout.resize(1);
         vout[0].nValue = 1 * COIN;
         vout[0].SetEmpty();
-        CTransaction txNew(1, 1476064955, vin, vout, 0);
+        CTransaction txNew(1, 1489138576, vin, vout, 0);
         genesis.vtx.push_back(txNew);
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
-        genesis.nTime    = 1476064955;
+        genesis.nTime    = 1489138576;
         genesis.nBits    = bnProofOfWorkLimit.GetCompact(); 
-        genesis.nNonce   = 401110;
+        genesis.nNonce   = 553043;
 
         hashGenesisBlock = genesis.GetHash();
 
-        assert(hashGenesisBlock == uint256("0x000003064eb8f1073629438313bf1a33382127a4bf432386ec8072e52d745d7a"));
-        assert(genesis.hashMerkleRoot == uint256("0xd2c52b32c106f9a6a1b8e129cefe31d52ddcc1b9c6ad60b2c3dbf29691063c51"));
+        assert(hashGenesisBlock == uint256("0x00000e54a9606e655b0093dff041d471fb46d913f979f0e79d4fafc944a214a9"));
+        assert(genesis.hashMerkleRoot == uint256("0xe772169f175877bd586ae31ed3ba66affd52d901763ed4b507d27be871b2db9c"));
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,26);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,102);
