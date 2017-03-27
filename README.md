@@ -10,8 +10,8 @@ Stake Minimum Age: 8 Hours
 0,5 BRO for Masternode owners
 0,5 BRO for Staking
 
-P2P Port: 32450
-RPC Port: 32451
+P2P Port: 32454
+RPC Port: 32455
 
 
 BUILD LINUX
