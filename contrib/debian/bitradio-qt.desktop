@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=BitRadio
+Comment=BitRadio P2P Cryptocurrency
+Comment[fr]=BitRadio, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=BitRadio, eşten eşe kriptografik sanal para birimi
+Exec=bitradio-qt %u
+Terminal=false
+Type=Application
+Icon=bitradio128
+MimeType=x-scheme-handler/bitradio;
+Categories=Office;Finance;

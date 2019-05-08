@@ -1,26 +1,26 @@
-TOR Support in Bitradio
+TOR SUPPORT IN BITRADIO
 =======================
 
-It is possible to run Bitradio as a Tor hidden service, and connect to such services.
+It is possible to run BitRadio as a Tor hidden service, and connect to such services.
 
-The following directions assume you have a Tor proxy running on port 9050. Many distributions
-default to having a SOCKS proxy listening on port 9050, but others may not.
-In particular, the Tor Browser Bundle defaults to listening on a random port. See
-https://www.torproject.org/docs/faq.html.en#TBBSocksPort for how to properly
-configure Tor.
+The following directions assume you have a Tor proxy running on port 9050. Many
+distributions default to having a SOCKS proxy listening on port 9050, but others
+may not. In particular, the Tor Browser Bundle defaults to listening on a random
+port. See [Tor Project FAQ:TBBSocksPort](https://www.torproject.org/docs/faq.html.en#TBBSocksPort)
+for how to properly configure Tor.
 
 
-1. Run Bitradio behind a Tor proxy
----------------------------------
+Run BitRadio behind a Tor proxy
+----------------------------------
 
-The first step is running Bitradio behind a Tor proxy. This will already make all
-outgoing connections be anonimized, but more is possible.
-
+The first step is running BitRadio behind a Tor proxy. This will already make all
+outgoing connections be anonymized, but more is possible.
+```
 -proxy=ip:port  Set the proxy server. If SOCKS5 is selected (default), this proxy
                 server will be used to try to reach .onion addresses as well.
 
--tor=ip:port    Set the proxy server to use for tor hidden services. You do not
-                need to set this if it's the same as -proxy. You can use -notor
+-onion=ip:port  Set the proxy server to use for tor hidden services. You do not
+                need to set this if it's the same as -proxy. You can use -noonion
                 to explicitly disable access to hidden service.
 
 -listen         When using -proxy, listening is disabled by default. If you want
@@ -32,28 +32,49 @@ outgoing connections be anonimized, but more is possible.
 -seednode=X     SOCKS5. In Tor mode, such addresses can also be exchanged with
                 other P2P nodes.
 
+-onlynet=tor    Only connect to .onion nodes and drop IPv4/6 connections.
+```
+
+An example how to start the client if the Tor proxy is running on local host on
+port 9050 and only allows .onion nodes to connect:
+```
+./bitradiod -onion=127.0.0.1:9050 -onlynet=tor -listen=0 -addnode=dnetzj6l4cvo2fxy.onion:989
+```
+
 In a typical situation, this suffices to run behind a Tor proxy:
+```
+./bitradiod -proxy=127.0.0.1:9050
+```
 
-  ./Bitradiod -proxy=127.0.0.1:9050
-
-
-2. Run a Bitradio hidden server
-------------------------------
+Run a BitRadio hidden server
+-------------------------------
 
 If you configure your Tor system accordingly, it is possible to make your node also
 reachable from the Tor network. Add these lines to your /etc/tor/torrc (or equivalent
 config file):
-
-  HiddenServiceDir /var/lib/tor/Bitradio-service/
-  HiddenServicePort 17170 127.0.0.1:17170
+```
+ClientOnly 1
+SOCKSPort 9050
+SOCKSPolicy accept 127.0.0.1/8
+Log notice file /var/log/tor/notices.log
+ControlPort 9051
+HiddenServiceDir /var/lib/tor/dnet/
+HiddenServicePort 989 127.0.0.1:33455
+HiddenServiceStatistics 0
+ORPort 9001
+LongLivedPorts 989
+ExitPolicy reject *:*
+DisableDebuggerAttachment 0
+NumEntryGuards 8
+```
 
 The directory can be different of course, but (both) port numbers should be equal to
-your Bitradiod's P2P listen port (17170 by default).
-
--externalip=X   You can tell litecoin about its publicly reachable address using
+your bitradiod's P2P listen port (33455 by default).
+```
+-externalip=X   You can tell bitradio about its publicly reachable address using
                 this option, and this can be a .onion address. Given the above
                 configuration, you can find your onion address in
-                /var/lib/tor/Bitradio-service/hostname. Onion addresses are given
+                /var/lib/tor/bitradio-service/hostname. Onion addresses are given
                 preference for your node to advertize itself with, for connections
                 coming from unroutable addresses (such as 127.0.0.1, where the
                 Tor proxy typically runs).
@@ -67,21 +88,39 @@ your Bitradiod's P2P listen port (17170 by default).
                 other addresses using -externalip, or explicitly enable -discover.
                 Note that both addresses of a dual-stack system may be easily
                 linkable using traffic analysis.
+```
 
 In a typical situation, where you're only reachable via Tor, this should suffice:
-
-  ./Bitradiod -proxy=127.0.0.1:9050 -externalip=57qr3yd1nyntf5k.onion -listen
+```
+./bitradiod -proxy=127.0.0.1:9050 -externalip=dnetzj6l4cvo2fxy.onion:989 -listen
+```
 
 (obviously, replace the Onion address with your own). If you don't care too much
 about hiding your node, and want to be reachable on IPv4 as well, additionally
 specify:
+```
+./bitradiod ... -discover
+```
 
-  ./Bitradiod ... -discover
-
-and open port 17170 on your firewall (or use -upnp).
+and open port 33455 on your firewall (or use -upnp).
 
 If you only want to use Tor to reach onion addresses, but not use it as a proxy
 for normal IPv4/IPv6 communication, use:
+```
+./bitradiod -onion=127.0.0.1:9050 -externalip=dnetzj6l4cvo2fxy.onion:989 -discover
+```
 
-  ./Bitradiod -tor=127.0.0.1:9050 -externalip=57qr3yd1nyntf5k.onion -discover
-
+List of known BitRadio Tor relays
+------------------------------------
+```
+y5kcscnhpygvvnjn.onion:989
+5bmhtjvn2jvwpiej.onion:989
+pyfdxkazur3iib7y.onion:989
+ok3ym5zy6m5klimk.onion:989
+i6vpvzk2jxuqqs5f.onion:989
+bgdhpb76fkbw5fmg.onion:989
+gtlqzb5zbws5di7g.onion:989
+f7j2m26rptm5f7af.onion:989
+dnetzj6l4cvo2fxy.onion:989
+s3v3n7xhqafg6sb7.onion:989
+```

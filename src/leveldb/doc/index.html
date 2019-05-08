@@ -101,7 +101,7 @@ same batch.
 <h1>Synchronous Writes</h1>
 By default, each write to <code>leveldb</code> is asynchronous: it
 returns after pushing the write from the process into the operating
-system.  The Bitradio from operating system memory to the underlying
+system.  The transfer from operating system memory to the underlying
 persistent storage happens asynchronously.  The <code>sync</code> flag
 can be turned on for a particular write to make the write operation
 not return until the data being written has been pushed all the way to
@@ -319,7 +319,7 @@ types defined in <code>include/leveldb/options.h</code>.
 <h2>Block size</h2>
 <p>
 <code>leveldb</code> groups adjacent keys together into the same block and such a
-block is the unit of Bitradio to and from persistent storage.  The
+block is the unit of transfer to and from persistent storage.  The
 default block size is approximately 4096 uncompressed bytes.
 Applications that mostly do bulk scans over the contents of the
 database may wish to increase this size.  Applications that do a lot
@@ -382,7 +382,7 @@ used to achieve this:
 </pre>
 <h2>Key Layout</h2>
 <p>
-Note that the unit of disk Bitradio and caching is a block.  Adjacent
+Note that the unit of disk transfer and caching is a block.  Adjacent
 keys (according to the database sort order) will usually be placed in
 the same block.  Therefore the application can improve its performance
 by placing keys that are accessed together near each other and placing

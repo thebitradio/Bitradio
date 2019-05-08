@@ -1,6 +1,0 @@
-# List of fixed seed nodes for main network
-
-# IPv4 nodes
-213.202.252.165
-89.163.134.227
-191.101.14.192
