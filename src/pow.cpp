@@ -34,7 +34,7 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
 
     if (pindexLast->nHeight > Params().LAST_POW_BLOCK()) {
         uint256 bnTargetLimit = (~uint256(0) >> 20);
-        int64_t nTargetSpacing = 60;
+        int64_t nTargetSpacing = 60 * 2;
         int64_t nTargetTimespan = 60 * 40;
 
         int64_t nActualSpacing = 0;

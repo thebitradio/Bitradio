@@ -103,7 +103,7 @@ public:
         nRejectBlockOutdatedMajority = 950;
         nToCheckBlockUpgradeMajority = 1000;
         nMinerThreads = 0;
-        nTargetTimespan = 1 * 60; // BitRadio: 1 minute
+        nTargetTimespan = 2 * 60; // BitRadio: 2 minute
         nTargetSpacing = 2 * 60;  // BitRadio: 2 minutes
         nLastPOWBlock = 300;
         nMaturity = 40;
@@ -111,7 +111,7 @@ public:
         nModifierUpdateBlock = 350;
         nMaxMoneyOut = 12500000 * COIN;
 
-        const char* pszTimestamp = "BitRadio has streamed over 59.714.332 hours as of November, 17 2018";
+        const char* pszTimestamp = "BitRadio has streamed over 65.482.665 hours as of May, 10 2019";
         CMutableTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
@@ -122,13 +122,14 @@ public:
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
-        genesis.nTime = 1547935395;
+        genesis.nTime = 1557523857;
         genesis.nBits = bnProofOfWorkLimit.GetCompact();
-        genesis.nNonce = 2839178;      
+        genesis.nNonce = 1022581;      
+
 
         hashGenesisBlock = genesis.GetHash();
-        assert(hashGenesisBlock == uint256("0x0000072ff31a4dc62d699e267c616a5416faa4494ebb67f6f0531287a7b68c5b"));
-        assert(genesis.hashMerkleRoot == uint256("0x5caa544d50b39556c6d57c19cdef9f3f26d5c61966d42301b2e27781b10e4aaf"));
+        assert(hashGenesisBlock == uint256("0x000000b908cffc5d22993b936e81deda15a5b7b566a80f3972df4d5c1e5b8c7d"));
+        assert(genesis.hashMerkleRoot == uint256("0x2e2f11408d209b2527c2429ee90a836c85ca4ffa2bf308d1f4906c6ecd4d5abe"));
 
         vSeeds.push_back(CDNSSeedData("seed1.bitrad.io", "seed1.bitrad.io"));
         vSeeds.push_back(CDNSSeedData("seed2.bitrad.io", "seed2.bitrad.io"));
@@ -191,7 +192,7 @@ public:
         nToCheckBlockUpgradeMajority = 100;
         nMinerThreads = 0;
         nTargetTimespan = 1 * 60; // BitRadio: 1 day
-        nTargetSpacing = 1 * 60;  // BitRadio: 1 minute
+        nTargetSpacing = 2 * 60;  // BitRadio: 1 minute
         nLastPOWBlock = 200;
         nMaturity = 15;
         nMasternodeCountDrift = 4;
@@ -199,11 +200,11 @@ public:
         nMaxMoneyOut = 43199500 * COIN;
 
         //! Modify the testnet genesis block so the timestamp is valid for a later start.
-        genesis.nTime = 1547935395;
-        genesis.nNonce = 2839178;
+        genesis.nTime = 1557523857;
+        genesis.nNonce = 1022581;
 
         hashGenesisBlock = genesis.GetHash();
-        assert(hashGenesisBlock == uint256("0x0000072ff31a4dc62d699e267c616a5416faa4494ebb67f6f0531287a7b68c5b"));
+        assert(hashGenesisBlock == uint256("0x000000b908cffc5d22993b936e81deda15a5b7b566a80f3972df4d5c1e5b8c7d"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
@@ -258,15 +259,15 @@ public:
         nToCheckBlockUpgradeMajority = 1000;
         nMinerThreads = 1;
         nTargetTimespan = 24 * 60 * 60; // BitRadio: 1 day
-        nTargetSpacing = 1 * 60;        // BitRadio: 1 minutes
+        nTargetSpacing = 2 * 60;        // BitRadio: 1 minutes
         bnProofOfWorkLimit = ~uint256(0) >> 1;
-        genesis.nTime = 1547935395;
+        genesis.nTime = 1557523857;
         genesis.nBits = bnProofOfWorkLimit.GetCompact();
-        genesis.nNonce = 1;
+        genesis.nNonce = 0;
         nDefaultPort = 11773;
 
         hashGenesisBlock = genesis.GetHash();
-        assert(hashGenesisBlock == uint256("0x0ee812679c70f133522253936d5375f8fd650391cd856994518b675c359a06f0"));
+        assert(hashGenesisBlock == uint256("0x323d039306a48d1c4554f18f872f6bdb729f43ca477f2fad716101231a07a8a2"));
 
         vFixedSeeds.clear(); //! Testnet mode doesn't have any fixed seeds.
         vSeeds.clear();      //! Testnet mode doesn't have any DNS seeds.
