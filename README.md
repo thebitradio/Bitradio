@@ -1,5 +1,7 @@
 ### BitRadio v1.1
 
+DO NOT COMPILE/RUN CLIENTS FROM THIS BRANCH!!!!
+
 This is a complete upgrade from the previous release.
 
 New Network/Masternode Port:  33455
