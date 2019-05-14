@@ -105,10 +105,10 @@ public:
         nMinerThreads = 0;
         nTargetTimespan = 2 * 60; // BitRadio: 2 minute
         nTargetSpacing = 2 * 60;  // BitRadio: 2 minutes
-        nLastPOWBlock = 300;
+        nLastPOWBlock = 100;
         nMaturity = 40;
         nMasternodeCountDrift = 20;
-        nModifierUpdateBlock = 350;
+        nModifierUpdateBlock = 35000000;
         nMaxMoneyOut = 12500000 * COIN;
 
         const char* pszTimestamp = "BitRadio has streamed over 65.482.665 hours as of May, 10 2019";
