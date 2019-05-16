@@ -103,12 +103,12 @@ public:
         nRejectBlockOutdatedMajority = 950;
         nToCheckBlockUpgradeMajority = 1000;
         nMinerThreads = 0;
-        nTargetTimespan = 2 * 60; // BitRadio: 2 minute
+        nTargetTimespan = 1 * 60; // Isn't used, handled in pow.cpp
         nTargetSpacing = 2 * 60;  // BitRadio: 2 minutes
-        nLastPOWBlock = 100;
+        nLastPOWBlock = 400;
         nMaturity = 40;
         nMasternodeCountDrift = 20;
-        nModifierUpdateBlock = 35000000;
+        nModifierUpdateBlock = 100;
         nMaxMoneyOut = 12500000 * COIN;
 
         const char* pszTimestamp = "BitRadio has streamed over 65.482.665 hours as of May, 10 2019";
@@ -126,7 +126,6 @@ public:
         genesis.nBits = bnProofOfWorkLimit.GetCompact();
         genesis.nNonce = 1022581;      
 
-
         hashGenesisBlock = genesis.GetHash();
         assert(hashGenesisBlock == uint256("0x000000b908cffc5d22993b936e81deda15a5b7b566a80f3972df4d5c1e5b8c7d"));
         assert(genesis.hashMerkleRoot == uint256("0x2e2f11408d209b2527c2429ee90a836c85ca4ffa2bf308d1f4906c6ecd4d5abe"));
@@ -135,7 +134,7 @@ public:
         vSeeds.push_back(CDNSSeedData("seed2.bitrad.io", "seed2.bitrad.io"));
         vSeeds.push_back(CDNSSeedData("seed3.bitrad.io", "seed3.bitrad.io"));
         vSeeds.push_back(CDNSSeedData("104.238.140.68", "104.238.140.68:33455")); // temp, network v2
-        vSeeds.push_back(CDNSSeedData("199.255.137.74", "199.255.137.74:33455")); // temp, network v2
+        vSeeds.push_back(CDNSSeedData("199.255.137.77", "199.255.137.77:33455")); // temp, network v2
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,26);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,102);
