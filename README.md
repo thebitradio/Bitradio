@@ -1,7 +1,6 @@
-### BitRadio v2
+### BitRadio v1.1.0.8
 
 DO NOT COMPILE/RUN CLIENTS FROM THIS BRANCH!!!!
-
-This is a complete upgrade from the previous release.
+This branch is for testing ONLY!
 
 ## About BitRadio
