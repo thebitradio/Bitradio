@@ -3603,7 +3603,11 @@ https://www.transifex.com/thebitradio-project/bitradio-project-translations</tra
     </message>
     <message>
         <source>Copyright (C) 2015-%i The PIVX Core Developers</source>
-        <translation>Todos os direitos reservados (C) 2015-%i aos Desenvolvedores do BitRadio Core</translation>
+        <translation>Todos os direitos reservados (C) 2015-%i aos Desenvolvedores do PIVX Core</translation>
+    </message>
+    <message>
+      <source>Copyright (C) 2019-%i The Bitradio Core Developers</source>
+      <translation>Todos os direitos reservados (C) 2019-%i aos Desenvolvedores do Bitradio Core</translation>
     </message>
     <message>
         <source>Corrupted block database detected</source>
