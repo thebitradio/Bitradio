@@ -1,0 +1,44 @@
+name: Windows (QT,CLI)
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-18.04
+
+    steps:
+    - name: npm install, build and test
+      run: |
+            sudo add-apt-repository -y ppa:bitcoin/bitcoin
+            sudo apt-get update
+            sudo apt-get install libdb4.8-dev libdb4.8++-dev -y
+
+            sudo apt-get install libqt5gui5 libqt5core5a libqt5dbus5 qttools5-dev qttools5-dev-tools libprotobuf-dev protobuf-compiler -y
+            sudo apt-get install libqt5gui5 libqt5core5a libqt5dbus5 libqt5svg5-dev libqt5charts5-dev qttools5-dev qttools5-dev-tools libprotobuf-dev protobuf-compiler libqrencode-dev -y
+            sudo apt-get install libssl1.0-dev -y
+            sudo apt install build-essential libtool autotools-dev automake pkg-config bsdmainutils curl git -y
+            sudo apt install g++-mingw-w64-x86-64 -y
+            sudo update-alternatives --config x86_64-w64-mingw32-g++
+            sudo apt install nsis -y
+            sudo apt-get install libboost-system-dev libboost-filesystem-dev libboost-chrono-dev libboost-program-options-dev libboost-test-dev libboost-thread-dev -y
+
+    - uses: actions/checkout@v1
+    - name: depends
+      working-directory: ./depends
+      run: make HOST=x86_64-w64-mingw32 -j2
+    - name: autogen.sh
+      run: ./autogen.sh
+    - name: configure
+      run: CONFIG_SITE=$PWD/depends/x86_64-w64-mingw32/share/config.site ./configure --prefix=/
+    - name: make
+      run: make -j 2
+    - name: make install
+      run: make install DESTDIR=/home/runner/work/Bitradio/Bitradio/installer -j 2
+    - name: make deploy
+      run: make deploy -j 2
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        name: bitradio-1.1.0.10-win64
+        path: /home/runner/work/Bitradio/Bitradio/installer
