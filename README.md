@@ -1,14 +1,23 @@
-### BitRadio v1.1.0 - Build 9
+# Bitradio Core v1.1
 
-This is a complete upgrade from the previous release.
+This is the official Bitradio Wallet Repository. If you are new to Bitrad.io or Crypto in general have a look at our Wiki Page where we have a guide for Beginners.
 
-New Network/Masternode Port:  33455
+## Coin specs
+Chain type: POS/MN
+Blocktime: 120 seconds
+Blockreward: 2 Bro
+Rewards: Masternode 50% / Staking 50%
+RPC Port: 44474
+P2P (Masternode) Port: 33455
 
-1.) Export your private keys from your 1.0 wallet.<br/>
-2.) Backup your data from your 1.0 wallet.<br/>
-3.) Upgrade your wallet to 1.1<br/>
-4.) importprivkey "put-your-key-here-"<br/>
+### Addnodes
+Here are a list of working Nodes to get your first connections.
+You can add them to the conf with ``` addnode=<node> ```
+or enter your debugconsole and enter ``` addnode <node> onetry ```
 
-Your balance from the previous chain will be ready for you :)
+Nodes:
+node1.bitrad.io
+node2.bitrad.io
+node3.bitrad.io
 
-## About BitRadio
+
