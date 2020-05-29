@@ -64,6 +64,13 @@ For Ubuntu 12.04 and later or Debian 7 and later libboost-all-dev has to be inst
 	sudo apt-get install libboost-all-dev
 
  db4.8 packages are available [here](https://launchpad.net/~bitcoin/+archive/bitcoin).
+ For newer Ubuntu versions (20.04) the repository isn't available.
+ Please use the script /contrib/install-db4.sh:
+ 
+ 	cd /contrib/
+ 	sudo chmod 777 install-db4.sh
+	sudo ./install-db4.sh <path-to-install>
+ 
  You can add the repository using the following command:
 
         sudo add-apt-repository ppa:bitcoin/bitcoin
